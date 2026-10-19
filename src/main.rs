@@ -34,7 +34,8 @@ async fn run() -> Result<()> {
     log::info!("Запуск утреннего бота...");
 
     let bot = Bot::from_env();
-    let database = Arc::new(Mutex::new(db::Database::new("bot_data.db")?));
+    let db_path = std::env::var("DB_PATH").unwrap_or_else(|_| "bot_data.db".to_string());
+    let database = Arc::new(Mutex::new(db::Database::new(&db_path)?));
 
     // Запускаем планировщик утренних сообщений
     let db_clone = Arc::clone(&database);
