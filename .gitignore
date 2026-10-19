@@ -1,0 +1,10 @@
+# Секреты — никогда не пушить!
+.env
+
+# Cargo/Rust
+/target/
+bot_data.db
+
+# IDE
+.vscode/
+.idea/
